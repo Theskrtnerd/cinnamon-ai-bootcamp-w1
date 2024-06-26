@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "llamagon-ocr-script"
+version = "0.1.0"
+description = "The OCR script to draw bounding boxes and read text lines from documents (.pdf, .doc, etc.)"
+authors = ["Viet Bach Tran <tvbbd2@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pytest = "^8.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
