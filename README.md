@@ -9,7 +9,7 @@ The homework for Cinnamon AI Bootcamp Week 1. The project is a OCR Script that c
 - Windows: create `venv`, then `pip install poetry`
 
 ### 2. Install all the dependencies:
-`poetry install`
+- Use `poetry install`
 
 ### 3. Run all the files:
 
