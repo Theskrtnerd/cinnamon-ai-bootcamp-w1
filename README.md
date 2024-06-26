@@ -8,7 +8,8 @@ The homework for Cinnamon AI Bootcamp Week 1. The project is a OCR Script that c
 - Linux, MacOS, Windows (WSL): `curl -sSL https://install.python-poetry.org | python3 -`
 - Windows: create `venv`, then `pip install poetry`
 
-### 2. Install all the dependencies: `poetry install`
+### 2. Install all the dependencies:
+`poetry install`
 
 ### 3. Run all the files:
 
