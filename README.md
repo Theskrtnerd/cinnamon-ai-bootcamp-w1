@@ -1,4 +1,5 @@
 # cinnamon-ai-bootcamp-w1
+
 The homework for Cinnamon AI Bootcamp Week 1. The project is a OCR Script that can read all text lines from documents
 
 ## How to use
@@ -9,6 +10,7 @@ The homework for Cinnamon AI Bootcamp Week 1. The project is a OCR Script that c
 - Windows: create `venv`, then `pip install poetry`
 
 ### 2. Install all the dependencies:
+
 - Use `poetry install`
 
 ### 3. Run all the files:
@@ -27,5 +29,3 @@ The homework for Cinnamon AI Bootcamp Week 1. The project is a OCR Script that c
 - Activate the environment: `poetry shell`
 - Deactivate the environement: `exit`
 - To learn more, go to [this link](https://python-poetry.org/docs/cli/)
-
-
