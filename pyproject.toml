@@ -22,6 +22,10 @@ pillow = "^10.3.0"
 pillow-heif = "^0.16.0"
 pdf2image = "^1.17.0"
 pre-commit = "^3.7.1"
+google-api-python-client = "^2.135.0"
+google-auth-httplib2 = "^0.2.0"
+google-auth-oauthlib = "^1.2.0"
+python-dotenv = "^1.0.1"
 
 [build-system]
 requires = ["poetry-core"]

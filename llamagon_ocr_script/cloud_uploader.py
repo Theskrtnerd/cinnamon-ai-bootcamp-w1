@@ -11,11 +11,7 @@ from googleapiclient.http import MediaFileUpload
 SCOPES = ["https://www.googleapis.com/auth/drive"]
 
 
-def upload_file(file_folder, file_name):
-    """
-    Upload the result photo and .json file to your GG Drive
-    How to use: `upload_file("resources/images/","photo_id_1.jpg")`
-    """
+def upload_photo(file_name):
     creds = None
     if os.path.exists("ENV/token.json"):
         creds = Credentials.from_authorized_user_file("ENV/token.json", SCOPES)
@@ -31,9 +27,9 @@ def upload_file(file_folder, file_name):
             token.write(creds.to_json())
     try:
         service = build("drive", "v3", credentials=creds)
-
+        
         file_metadata = {"name": file_name}
-        media = MediaFileUpload(file_folder + file_name)
+        media = MediaFileUpload(file_name)
 
         file = (
             service.files()
@@ -48,5 +44,6 @@ def upload_file(file_folder, file_name):
     return file.get("id")
 
 
+
 if __name__ == "__main__":
-    upload_file("testing_photos/", "emoji.jpg")
+    upload_photo("testing_photos/emoji.jpg")
