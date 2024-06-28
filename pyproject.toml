@@ -7,10 +7,15 @@ license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.11"
 pytest = "^8.2.2"
+paddlepaddle = "^2.6.1"
+paddleocr = ">=2.0.1"
+pymupdf = "1.21.1"
+numpy = "1.26.4"
+opencv-python = "4.10.0.84"
 
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core", "setuptools", "wheel"]
+build-backend = ["poetry.core.masonry.api", "setuptools.build_meta"]
