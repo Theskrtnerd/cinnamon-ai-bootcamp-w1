@@ -1,15 +1,15 @@
 from paddleocr import PaddleOCR
-from PIL import Image
 import numpy as np
 import cv2 
 import os
 import json
+from .file_handler import read_image
+
+
 
 ocr_object = PaddleOCR(use_angle_cls=True, lang='en')          # supported languages: `ch`, `en`, `fr`, `german`, `korean`, `japan`
-img_path = 'resource/images/champ.jpg'
-save_dir = 'resource/output'
-
-
+img_path = 'resource/images/champ.jpg'                         # used for debug only, can be deleted later
+save_dir = 'resource/output'                                   # modify if needed        
 
 
 
@@ -73,12 +73,9 @@ def detect_text_multiple_images(images: list[np.ndarray], ocr_object, file_name:
 
 
 
-
-    
-
-
-images = [read_image(img_path)]
-result = detect_text_multiple_images(images, ocr_object, img_path.split('/')[-1].split('.')[0], save_dir)
+if "__name__" == "__main__":
+    images = [read_image(img_path)]
+    result = detect_text_multiple_images(images, ocr_object, img_path.split('/')[-1].split('.')[0], save_dir)
 
 
 # for idx in range(len(result)):
