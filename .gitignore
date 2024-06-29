@@ -161,5 +161,12 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
+
+# Note modules
+node_modules
+
+# vscode
+.vscode
+
 # Resource files
 llamagon_ocr_script/resource/*
