@@ -1,8 +1,12 @@
-import pytest
 import numpy as np
+import pytest
 import os
-from llamagon_ocr_script.file_handler import pdf_to_images, doc_to_images, \
-    read_image, convert_to_images
+from llamagon_ocr_script.file_handler import (
+    convert_to_images,
+    doc_to_images,
+    pdf_to_images,
+    read_image,
+)
 
 
 TEST_FOLDER = "tests/test_files"

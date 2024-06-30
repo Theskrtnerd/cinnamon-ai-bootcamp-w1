@@ -1,16 +1,16 @@
 import cv2
+import numpy as np
 from pdf2image import convert_from_path
 from PIL import Image
 from pillow_heif import register_heif_opener
 import os
 import subprocess
-import numpy as np
 from typing import Sequence
 
 
 register_heif_opener()
-LIBREOFFICE_PATH = '/Applications/LibreOffice.app/Contents/MacOS/soffice'
-ACCEPT_TYPES = ['.png', '.tiff', '.pdf', '.doc', '.docx', '.heic']
+LIBREOFFICE_PATH = "/Applications/LibreOffice.app/Contents/MacOS/soffice"
+ACCEPT_TYPES = [".png", ".tiff", ".pdf", ".doc", ".docx", ".heic"]
 
 
 # MUST: Install poppler
@@ -24,19 +24,28 @@ def pdf_to_images(pdf_path) -> list:
 # MUST: Install libreoffice
 def convert_to_pdf(doc_path, temp_dir) -> None:
     try:
-        subprocess.run([LIBREOFFICE_PATH, '--headless', '--convert-to', 'pdf',
-                        '--outdir', temp_dir, doc_path],
-                       check=True)
+        subprocess.run(
+            [
+                LIBREOFFICE_PATH,
+                "--headless",
+                "--convert-to",
+                "pdf",
+                "--outdir",
+                temp_dir,
+                doc_path,
+            ],
+            check=True,
+        )
     except subprocess.CalledProcessError as e:
         print(f"An error occurred: {e}")
 
 
-def doc_to_images(doc_path, temp_dir='temp_files') -> list:
+def doc_to_images(doc_path, temp_dir="temp_files") -> list:
     os.makedirs(temp_dir, exist_ok=True)
     # Convert .doc to .pdf
     convert_to_pdf(doc_path, temp_dir)
     filename = os.path.splitext(os.path.basename(doc_path))[0]
-    pdf_path = os.path.join(temp_dir, filename+".pdf")
+    pdf_path = os.path.join(temp_dir, filename + ".pdf")
 
     # Extract images from .pdf
     images = pdf_to_images(pdf_path)
@@ -51,7 +60,7 @@ def doc_to_images(doc_path, temp_dir='temp_files') -> list:
 
 def read_image(image_path) -> np.array:
     pil_image = Image.open(image_path)
-    pil_image = pil_image.convert('RGB')
+    pil_image = pil_image.convert("RGB")
     return np.asarray(pil_image)
 
 
