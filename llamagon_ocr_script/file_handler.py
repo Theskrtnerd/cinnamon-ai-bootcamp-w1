@@ -1,11 +1,12 @@
+import os
+import subprocess
+from typing import Sequence
+
 import cv2
 import numpy as np
 from pdf2image import convert_from_path
 from PIL import Image
 from pillow_heif import register_heif_opener
-import os
-import subprocess
-from typing import Sequence
 
 
 register_heif_opener()
@@ -16,8 +17,10 @@ ACCEPT_TYPES = [".png", ".tiff", ".pdf", ".doc", ".docx", ".heic"]
 # MUST: Install poppler
 def pdf_to_images(pdf_path) -> list:
     images = convert_from_path(pdf_path)
-    cv2_images = [cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
-                  for image in images]
+    cv2_images = [
+        cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+        for image in images
+        ]
     return cv2_images
 
 
