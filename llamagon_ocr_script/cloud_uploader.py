@@ -27,7 +27,7 @@ def upload_photo(file_name):
             token.write(creds.to_json())
     try:
         service = build("drive", "v3", credentials=creds)
-        
+
         file_metadata = {"name": file_name}
         media = MediaFileUpload(file_name)
 
@@ -42,7 +42,6 @@ def upload_photo(file_name):
         file = None
 
     return file.get("id")
-
 
 
 if __name__ == "__main__":

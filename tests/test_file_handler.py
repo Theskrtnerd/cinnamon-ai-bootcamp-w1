@@ -2,13 +2,13 @@ import os
 
 import numpy as np
 import pytest
+
 from llamagon_ocr_script.file_handler import (
     convert_to_images,
     doc_to_images,
     pdf_to_images,
     read_image,
 )
-
 
 TEST_FOLDER = "tests/test_files"
 
