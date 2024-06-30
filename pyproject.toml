@@ -31,6 +31,9 @@ paddleocr = ">=2.0.1"
 pymupdf = "1.21.1"
 numpy = "1.26.4"
 opencv-python = "4.10.0.84"
+pillow = "^10.3.0"
+pillow-heif = "^0.16.0"
+pdf2image = "^1.17.0"
 
 [build-system]
 requires = ["poetry-core", "setuptools", "wheel"]
