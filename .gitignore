@@ -168,5 +168,12 @@ node_modules
 # vscode
 .vscode
 
+
+# Note modules
+node_modules
+
+# vscode
+.vscode
+
 # Resource files
 llamagon_ocr_script/resource/*
