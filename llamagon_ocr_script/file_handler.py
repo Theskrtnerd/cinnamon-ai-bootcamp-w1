@@ -57,10 +57,11 @@ def doc_to_images(doc_path, temp_dir="temp_files") -> list:
     return images
 
 
-def read_image(image_path) -> np.array:
+def read_image(image_path) -> np.ndarray:
     pil_image = Image.open(image_path)
     pil_image = pil_image.convert("RGB")
-    return np.asarray(pil_image)
+    pil_image = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR)
+    return pil_image
 
 
 def convert_to_images(file_path) -> Sequence[np.array]:
@@ -77,13 +78,3 @@ def convert_to_images(file_path) -> Sequence[np.array]:
     else:
         res = [read_image(file_path)]
     return res
-
-
-
-
-# sua ham read_image de giong voi pdf->img, doc->img va tuong thich voi ocr_parser
-def read_image(image_path) -> np.ndarray:
-    pil_image = Image.open(image_path)
-    pil_image = pil_image.convert('RGB')
-    pil_image = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR)
-    return pil_image
