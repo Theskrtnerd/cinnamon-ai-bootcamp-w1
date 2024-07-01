@@ -79,7 +79,6 @@ if "__name__" == "__main__":
         images, ocr_object, img_path.split("/")[-1].split(".")[0], save_dir
     )
 
-
 # for idx in range(len(result)):
 #     line = result[idx]
 #     print(f"Box: {line[0]}")
