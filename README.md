@@ -2,6 +2,12 @@
 
 The homework for Cinnamon AI Bootcamp Week 1. The project is a OCR Script that can read all text lines from documents
 
+## Features
+
+- Convert [`.png`, `.tiff`, `.pdf`, `.docx`, `.heic`] to images.
+- Extract text from images using OCR.
+- (Optional) Upload result to cloud system.
+
 ## How to use
 
 ### 1. Install Poetry:
@@ -13,18 +19,27 @@ The homework for Cinnamon AI Bootcamp Week 1. The project is a OCR Script that c
 
 - Use `poetry install`
 
-### 3. Run all the files:
+### 3. Install poppler:
+
+- For MacOS: `brew install poppler`
+- For Ubuntu/Linux: `sudo apt update`
+
+  `sudo apt install poppler-utils`
+
+- For Windows: https://poppler.freedesktop.org
+
+### 4. Run all the files:
 
 - To run the script: `poetry run python your_script.py`
 - To run the tests: `poetry run pytest`
 
-### 4. Libraries/Dependencies management:
+### 5. Libraries/Dependencies management:
 
 - Add new dependency / install new library: `poetry add <package-name>`
 - Update dependencies and `poetry.lock` file: `poetry update <package-name>`
 - Remove dependencies: `poetry remove <package-name>`
 
-### 5. Other commands:
+### 6. Other commands:
 
 - Activate the environment: `poetry shell`
 - Deactivate the environement: `exit`
