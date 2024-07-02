@@ -1,20 +1,30 @@
-# main.py
+import argparse
 from file_handler import convert_to_images
 from ocr_parser import detect_text_multiple_images
-from cloud_uploader import upload_photo
 from paddleocr import PaddleOCR
+from cloud_uploader import upload_folder
 
-img_path = "input/Quant Simulation Research.pdf"  # used for debug only, can be deleted later
-save_dir = "output/"  # modify if needed
 
-images = convert_to_images(img_path)
-ocr_object = PaddleOCR(
-    use_angle_cls=True, lang="en"
-)  
+def main(file_name, upload):
+    img_path = f"input/{file_name}"
+    save_dir = "output/"  # Modify if needed
 
-result = detect_text_multiple_images(
-    images, ocr_object, img_path.split("/")[-1].split(".")[0], save_dir
-)
+    images = convert_to_images(img_path)
+    ocr_object = PaddleOCR(use_angle_cls=True, lang="en")
 
-# Optional: upload the result to the cloud
-# upload_photo(result)
+    folder_name = file_name.split(".")[0]
+
+    detect_text_multiple_images(images, ocr_object, folder_name, save_dir)
+
+    if upload:
+        upload_folder(folder_name)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Process a PDF file and optionally upload the result to the cloud.")
+    parser.add_argument("file_name", type=str, help="The name of the PDF file to process.")
+    parser.add_argument("--upload", action="store_true", help="Upload the result folder to the cloud.")
+
+    args = parser.parse_args()
+
+    main(args.file_name, args.upload)

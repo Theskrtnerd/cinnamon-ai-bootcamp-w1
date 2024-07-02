@@ -11,7 +11,7 @@ from googleapiclient.http import MediaFileUpload
 SCOPES = ["https://www.googleapis.com/auth/drive"]
 
 
-def upload_photo(file_name):
+def authorize_google():
     creds = None
     if os.path.exists("ENV/token.json"):
         creds = Credentials.from_authorized_user_file("ENV/token.json", SCOPES)
@@ -25,24 +25,51 @@ def upload_photo(file_name):
             creds = flow.run_local_server(port=0)
         with open("ENV/token.json", "w") as token:
             token.write(creds.to_json())
+    return creds
+
+
+def create_folder(service, folder_name):
+    file_metadata = {
+        "name": folder_name,
+        "mimeType": "application/vnd.google-apps.folder",
+    }
+
+    file = service.files().create(body=file_metadata, fields="id").execute()
+    print(f'Folder ID: "{file.get("id")}".')
+    return file.get("id")
+
+
+def upload_folder(folder_name):
+    creds = authorize_google()
+
     try:
         service = build("drive", "v3", credentials=creds)
 
-        file_metadata = {"name": file_name}
-        media = MediaFileUpload(file_name)
+        folder_id = create_folder(service, folder_name)
 
-        file = (
-            service.files()
-            .create(body=file_metadata, media_body=media, fields="id")
-            .execute()
-        )
-        print(f'File ID: {file.get("id")}')
+        print(os.listdir(f"./output/{folder_name}/"))
+        
+        for file_name in os.listdir(f"./output/{folder_name}/"):
+            upload_file(service, folder_name, folder_id, file_name)
+        
     except HttpError as error:
         print(f"An error occurred: {error}")
-        file = None
 
+
+def upload_file(service, folder_name, folder_id, file_name):
+
+    file_metadata = {"name": file_name, 'parents': [folder_id]}
+    media = MediaFileUpload(f"./output/{folder_name}/{file_name}")
+
+    file = (
+        service.files()
+        .create(body=file_metadata, media_body=media, fields="id")
+        .execute()
+    )
+    print(f'File ID: {file.get("id")}')
+    
     return file.get("id")
 
 
 if __name__ == "__main__":
-    upload_photo("testing_photos/emoji.jpg")
+    upload_folder("Quant Simulation Research")
