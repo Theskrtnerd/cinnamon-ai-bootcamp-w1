@@ -2,7 +2,6 @@ import os
 import unittest
 from unittest.mock import MagicMock, patch
 
-import mypath  # noqa: W0611
 import numpy as np
 
 from llamagon_ocr_script.ocr_parser import (
