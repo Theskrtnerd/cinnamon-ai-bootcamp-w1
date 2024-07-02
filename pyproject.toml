@@ -1,28 +1,24 @@
 [tool.poetry]
-name = "llamagon-ocr-script"
+name = "cinnamon-ai-bootcamp-w1"
 version = "0.1.0"
-description = "The OCR script to draw bounding boxes and read text lines from documents (.pdf, .doc, etc.)"
+description = ""
 authors = ["Viet Bach Tran <tvbbd2@gmail.com>"]
-license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "3.11.9"
+paddleocr = "^2.7.3"
+numpy = "1.24.4"
+pdf2image = "^1.17.0"
+pillow-heif = "^0.16.0"
 pytest = "^8.2.2"
+pre-commit = "^3.7.1"
+google-auth = "^2.31.0"
+google-auth-oauthlib = "^1.2.0"
 google-api-python-client = "^2.135.0"
 google-auth-httplib2 = "^0.2.0"
-google-auth-oauthlib = "^1.2.0"
-python-dotenv = "^1.0.1"
-paddlepaddle = "^2.6.1"
-paddleocr = ">=2.0.1"
-pymupdf = "1.21.1"
-numpy = "1.26.4"
-opencv-python = "^4.10.0.84"
-pillow = "^10.3.0"
-pillow-heif = "^0.16.0"
-pdf2image = "^1.17.0"
-pre-commit = "^3.7.1"
+
 
 [build-system]
-requires = ["poetry-core", "setuptools", "wheel"]
-build-backend = ["poetry.core.masonry.api", "setuptools.build_meta"]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

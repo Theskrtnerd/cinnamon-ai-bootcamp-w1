@@ -1,4 +1,4 @@
-# This is for the main script, combining the functions/components from other files
+# main.py
 from file_handler import convert_to_images
 from ocr_parser import detect_text_multiple_images
 from cloud_uploader import upload_photo
@@ -15,3 +15,6 @@ ocr_object = PaddleOCR(
 result = detect_text_multiple_images(
     images, ocr_object, img_path.split("/")[-1].split(".")[0], save_dir
 )
+
+# Optional: upload the result to the cloud
+# upload_photo(result)

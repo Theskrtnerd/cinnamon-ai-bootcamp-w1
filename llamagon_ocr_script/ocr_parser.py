@@ -5,8 +5,6 @@ import cv2
 import numpy as np
 from paddleocr import PaddleOCR
 
-from .file_handler import read_image
-
 ocr_object = PaddleOCR(
     use_angle_cls=True, lang="en"
 )  # supported languages: `ch`, `en`, `fr`, `german`, `korean`, `japan`
@@ -73,11 +71,11 @@ def detect_text_multiple_images(
     save_json_file(json_output, file_name, output_folder)
 
 
-if "__name__" == "__main__":
-    images = [read_image(img_path)]
-    result = detect_text_multiple_images(
-        images, ocr_object, img_path.split("/")[-1].split(".")[0], save_dir
-    )
+# if "__name__" == "__main__":
+#    images = [read_image(img_path)]
+#    result = detect_text_multiple_images(
+#        images, ocr_object, img_path.split("/")[-1].split(".")[0], save_dir
+#    )
 
 # for idx in range(len(result)):
 #     line = result[idx]
