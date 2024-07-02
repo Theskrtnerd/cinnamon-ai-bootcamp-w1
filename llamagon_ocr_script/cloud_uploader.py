@@ -48,17 +48,17 @@ def upload_folder(folder_name):
         folder_id = create_folder(service, folder_name)
 
         print(os.listdir(f"./output/{folder_name}/"))
-        
+
         for file_name in os.listdir(f"./output/{folder_name}/"):
             upload_file(service, folder_name, folder_id, file_name)
-        
+
     except HttpError as error:
         print(f"An error occurred: {error}")
 
 
 def upload_file(service, folder_name, folder_id, file_name):
 
-    file_metadata = {"name": file_name, 'parents': [folder_id]}
+    file_metadata = {"name": file_name, "parents": [folder_id]}
     media = MediaFileUpload(f"./output/{folder_name}/{file_name}")
 
     file = (
@@ -67,7 +67,7 @@ def upload_file(service, folder_name, folder_id, file_name):
         .execute()
     )
     print(f'File ID: {file.get("id")}')
-    
+
     return file.get("id")
 
 

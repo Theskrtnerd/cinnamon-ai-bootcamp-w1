@@ -1,8 +1,9 @@
 import argparse
+
+from cloud_uploader import upload_folder
 from file_handler import convert_to_images
 from ocr_parser import detect_text_multiple_images
 from paddleocr import PaddleOCR
-from cloud_uploader import upload_folder
 
 
 def main(file_name, upload):
@@ -21,9 +22,15 @@ def main(file_name, upload):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Process a PDF file and optionally upload the result to the cloud.")
-    parser.add_argument("file_name", type=str, help="The name of the PDF file to process.")
-    parser.add_argument("--upload", action="store_true", help="Upload the result folder to the cloud.")
+    parser = argparse.ArgumentParser(
+        description="Process a PDF file and optionally upload the result to the cloud."
+    )
+    parser.add_argument(
+        "file_name", type=str, help="The name of the PDF file to process."
+    )
+    parser.add_argument(
+        "--upload", action="store_true", help="Upload the result folder to the cloud."
+    )
 
     args = parser.parse_args()
 
