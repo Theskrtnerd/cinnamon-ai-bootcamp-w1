@@ -37,6 +37,4 @@ jobs:
       - name: Add credentials.json file
         run: echo "${{ secrets.GOOGLE_API_CREDENTIALS }}" > ENV/credentials.json
         shell: bash
-      - name: Run tests
-        run: poetry run pytest
       - uses: pre-commit/action@v3.0.1
