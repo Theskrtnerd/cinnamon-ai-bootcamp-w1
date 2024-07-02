@@ -13,7 +13,7 @@ img_path = "resource/images/champ.jpg"  # used for debug only, can be deleted la
 save_dir = "resource/output"  # modify if needed
 
 
-def detect_text_single_image(image: np.ndarray, ocr_object) -> dict:
+def detect_text_single_image(image: np.ndarray, ocr_object) -> list:
     json_output = []
     result = ocr_object.ocr(image, cls=True)
     for line in result:
@@ -59,7 +59,7 @@ def detect_text_multiple_images(
     file_name: str,
     save_dir: str,
     save_visualized=False,
-) -> None:
+) -> list:
     # prepare output folder to save images and json file
     json_output = []
     output_folder = os.path.join(save_dir, file_name)
