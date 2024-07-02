@@ -13,8 +13,8 @@ save_dir = "resource/output"  # modify if needed
 
 
 def box_as_percent(box: list, img_width: int, img_height: int) -> list:
-    x1, y1 = box[0]
-    x2, y2 = box[2]
+    x1, y1 = box[0][0]
+    x2, y2 = box[0][2]
     x1_percent = round(x1 / img_width, 4)
     y1_percent = round(y1 / img_height, 4)
     x2_percent = round(x2 / img_width, 4)
@@ -26,6 +26,7 @@ def detect_text_single_image(image: np.ndarray, ocr_object) -> dict:
     json_output = []
     result = ocr_object.ocr(image, cls=True)
     for line in result:
+        print(line[0])
         line_instance = {}
         line_instance["box"] = box_as_percent(line[0], image.shape[1], image.shape[0])
         line_instance["text"] = line[1][0]
