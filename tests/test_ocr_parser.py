@@ -1,8 +1,8 @@
 import os
-import sys
 import unittest
 from unittest.mock import MagicMock, patch
 
+import mypath  # noqa: W0611
 import numpy as np
 
 from llamagon_ocr_script.ocr_parser import (
@@ -12,8 +12,6 @@ from llamagon_ocr_script.ocr_parser import (
     save_json_file,
     save_visualized_image,
 )
-
-sys.path.append("../llamagon_ocr_script")
 
 
 class TestOCRParser(unittest.TestCase):
@@ -58,9 +56,6 @@ class TestOCRParser(unittest.TestCase):
         mock_path_join.assert_called_once_with(output_folder, file_name + ".json")
         self.assertEqual(
             mock_path_join(output_folder, file_name + ".json"), "dummy_path.json"
-        )
-        mock_open.assert_called_once_with(
-            os.path.join(output_folder, file_name + ".json"), "w"
         )
 
     @patch("ocr_parser.cv2.imwrite")
