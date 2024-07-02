@@ -5,7 +5,7 @@ import pytest
 
 from llamagon_ocr_script.file_handler import (
     convert_to_images,
-    doc_to_images,
+    docx_to_images,
     pdf_to_images,
     read_image,
 )
@@ -18,9 +18,9 @@ def test_pdf_file():
     assert type(pdf_to_images(pdf_path)) == list
 
 
-def test_doc_file():
-    file_path = os.path.join(TEST_FOLDER, "test.doc")
-    assert type(doc_to_images(file_path)) == list
+def test_docx_file():
+    file_path = os.path.join(TEST_FOLDER, "test.docx")
+    assert type(docx_to_images(file_path)) == list
 
 
 def test_tiff_file():
