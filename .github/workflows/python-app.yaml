@@ -33,9 +33,9 @@ jobs:
       - name: install dependencies
         run: poetry install
       - name: Create ENV folder
-        run: mkdir -p /ENV
+        run: mkdir ENV/
       - name: Add credentials.json file
-        run: echo "${{ secrets.GOOGLE_API_CREDENTIALS }}" > /ENV/credentials.json
+        run: echo "${{ secrets.GOOGLE_API_CREDENTIALS }}" > ENV/credentials.json
         shell: bash
       - name: Run tests
         run: poetry run pytest
