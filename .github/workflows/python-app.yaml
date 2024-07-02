@@ -32,4 +32,9 @@ jobs:
         run: poetry --help
       - name: install dependencies
         run: poetry install
+      - name: Create ENV folder
+        run: mkdir ENV/
+      - name: Add credentials.json file
+        run: echo "${{ secrets.GOOGLE_API_CREDENTIALS }}" > ENV/credentials.json
+        shell: bash
       - uses: pre-commit/action@v3.0.1
