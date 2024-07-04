@@ -39,7 +39,7 @@ def create_folder(service, folder_name):
     return file.get("id")
 
 
-def upload_folder(folder_name):
+def upload_folder(folder_name, save_dir):
     creds = authorize_google()
 
     try:
@@ -47,19 +47,19 @@ def upload_folder(folder_name):
 
         folder_id = create_folder(service, folder_name)
 
-        print(os.listdir(f"./output/{folder_name}/"))
+        print(os.listdir(f"./{save_dir}/{folder_name}/"))
 
-        for file_name in os.listdir(f"./output/{folder_name}/"):
-            upload_file(service, folder_name, folder_id, file_name)
+        for file_name in os.listdir(f"./{save_dir}/{folder_name}/"):
+            upload_file(service, folder_name, folder_id, file_name, save_dir)
 
     except HttpError as error:
         print(f"An error occurred: {error}")
 
 
-def upload_file(service, folder_name, folder_id, file_name):
+def upload_file(service, folder_name, folder_id, file_name, save_dir):
 
     file_metadata = {"name": file_name, "parents": [folder_id]}
-    media = MediaFileUpload(f"./output/{folder_name}/{file_name}")
+    media = MediaFileUpload(f"./{save_dir}/{folder_name}/{file_name}")
 
     file = (
         service.files()
