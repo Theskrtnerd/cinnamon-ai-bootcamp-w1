@@ -1,4 +1,5 @@
 import argparse
+
 from cloud_uploader import upload_folder
 from file_handler import convert_to_images
 from ocr_parser import detect_text_multiple_images
@@ -31,10 +32,16 @@ if __name__ == "__main__":
         "--upload", action="store_true", help="Upload the result folder to the cloud."
     )
     parser.add_argument(
-        "--input_folder", type=str, default="input", help="The input folder containing the PDF file."
+        "--input_folder",
+        type=str,
+        default="input",
+        help="The input folder containing the PDF file.",
     )
     parser.add_argument(
-        "--output_folder", type=str, default="output", help="The folder to save the output images and text."
+        "--output_folder",
+        type=str,
+        default="output",
+        help="The folder to save the output images and text.",
     )
 
     args = parser.parse_args()
