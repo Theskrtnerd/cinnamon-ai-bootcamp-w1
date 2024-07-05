@@ -80,19 +80,3 @@ if __name__ == "__main__":
     result = detect_text_multiple_images(
         images, ocr_object, img_path.split("/")[-1].split(".")[0], save_dir, True
     )
-
-
-# for idx in range(len(result)):
-#     line = result[idx]
-#     print(f"Box: {line[0]}")
-#     print(f"Text: {line[1][0]}")
-#     print(f"Score: {line[1][1]}")
-#     print()
-
-# # # draw result
-# image = Image.open(img_path).convert('RGB')
-
-# output_img_path = img_path.split('.')[0] + '_result.jpg'
-# im_show = draw_ocr(image, boxes, texts, scores, font_path='resource/fonts/simfang.ttf')
-# im_show = Image.fromarray(im_show)
-# im_show.save(output_img_path)
