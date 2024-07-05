@@ -13,7 +13,7 @@ img_path = "resource/images/champ.jpg"  # used for debug only, can be deleted la
 save_dir = "resource/output"  # modify if needed
 
 
-def detect_text_single_image(image: np.ndarray, ocr_object) -> dict:
+def detect_text_single_image(image: np.ndarray, ocr_object) -> list:
     json_output = []
     result = ocr_object.ocr(image, cls=True)
     for line in result:
@@ -59,7 +59,7 @@ def detect_text_multiple_images(
     file_name: str,
     save_dir: str,
     save_visualized=False,
-) -> None:
+) -> list:
     # prepare output folder to save images and json file
     json_output = []
     output_folder = os.path.join(save_dir, file_name)
@@ -80,19 +80,3 @@ if __name__ == "__main__":
     result = detect_text_multiple_images(
         images, ocr_object, img_path.split("/")[-1].split(".")[0], save_dir, True
     )
-
-
-# for idx in range(len(result)):
-#     line = result[idx]
-#     print(f"Box: {line[0]}")
-#     print(f"Text: {line[1][0]}")
-#     print(f"Score: {line[1][1]}")
-#     print()
-
-# # # draw result
-# image = Image.open(img_path).convert('RGB')
-
-# output_img_path = img_path.split('.')[0] + '_result.jpg'
-# im_show = draw_ocr(image, boxes, texts, scores, font_path='resource/fonts/simfang.ttf')
-# im_show = Image.fromarray(im_show)
-# im_show.save(output_img_path)
